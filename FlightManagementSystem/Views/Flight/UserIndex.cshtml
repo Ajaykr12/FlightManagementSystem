@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FlightManagementSystem.Models.Flight>
+
+@{
+    ViewData["Title"] = "Available Flights";
+}
+
+<h1>Available Flights</h1>
+
+@if (!Model.Any())
+{
+    <p>No flights available at the moment.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Flight Name</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Arrival Time</th>
+                <th>Departure Time</th>
+                <th>Available Seats</th>
+                <th>Reserve</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model)
+            {
+                <tr>
+                    <td>@flight.Name</td>
+                    <td>@flight.Source</td>
+                    <td>@flight.Destination</td>
+                    <td>@flight.DepartureTime.ToString("g")</td>
+                    <td>@flight.ArrivalTime.ToString("g")</td>
+                    <td>@flight.AvailableSeats</td>
+                    <td>
+                        <a asp-controller="Passenger"  asp-action="UserIndex" asp-route-id="@flight.Id" class="btn btn-primary">
+                            Reserve
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

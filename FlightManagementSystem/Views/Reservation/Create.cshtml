@@ -1,0 +1,52 @@
+﻿@model FlightManagementSystem.Models.Reservation
+
+@{
+    ViewData["Title"] = "Create Reservation";
+}
+
+<h2>Create Reservation</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="PassengerId">Passenger</label>
+        <select id="PassengerId" name="PassengerId" class="form-control" required>
+            <option value="">Select a Passenger</option>
+            @foreach (var passenger in ViewBag.Passengers)
+            {
+                <option value="@passenger.Id">@passenger.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="FlightId">Flight</label>
+        <select id="FlightId" name="FlightId" class="form-control" required>
+            <option value="">Select a Flight</option>
+            @foreach (var flight in ViewBag.Flights)
+            {
+                <option value="@flight.Id">@flight.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="JourneyDate">Journey Date</label>
+        <input type="datetime-local" id="JourneyDate" name="JourneyDate" class="form-control" value="@Model.JourneyDate.ToString("yyyy-MM-ddTHH:mm")" required />
+    </div>
+
+    <div class="form-group">
+        <label for="PaymentMode">Payment Mode</label>
+        <input type="text" id="PaymentMode" name="PaymentMode" class="form-control" value="@Model.PaymentMode" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Amount">Amount</label>
+        <input type="number" id="Amount" name="Amount" class="form-control" value="@Model.Amount" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Reservation</button>
+</form>
+
+<p>
+    <a href="@Url.Action("Index", "Reservation")">Back to Reservation List</a>
+</p>

@@ -1,0 +1,27 @@
+﻿@model FlightManagementSystem.Models.Reservation
+
+@{
+    ViewData["Title"] = "Cancel Reservation";
+}
+
+<h2>Are you sure you want to cancel this reservation?</h2>
+
+<div>
+    <strong>Passenger Name:</strong> @Model.Passenger.Name
+    <br />
+    <strong>Flight Name:</strong> @Model.Flight.Name
+    <br />
+    <strong>Reservation Date:</strong> @Model.ReservationDate.ToShortDateString()
+    <br />
+    <strong>Journey Date:</strong> @Model.JourneyDate.ToShortDateString()
+    <br />
+    <strong>Payment Mode:</strong> @Model.PaymentMode
+    <br />
+    <strong>Amount:</strong> @Model.Amount
+    <br />
+</div>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Yes, Cancel Reservation</button>
+    <a href="@Url.Action("Index", "Reservation")" class="btn btn-secondary">No, Go Back</a>
+</form>

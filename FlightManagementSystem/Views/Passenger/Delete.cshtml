@@ -1,0 +1,30 @@
+﻿@model FlightManagementSystem.Models.Passenger
+
+@{
+    ViewData["Title"] = "Delete Passenger";
+}
+
+<h1>Delete Passenger</h1>
+
+<p>Are you sure you want to delete the following passenger?</p>
+
+<div>
+    <strong>Name:</strong> @Model.Name
+</div>
+<div>
+    <strong>Address:</strong> @Model.Address
+</div>
+<div>
+    <strong>Identification Type:</strong> @Model.IdentificationType
+</div>
+<div>
+    <strong>Identification Number:</strong> @Model.IdentificationNumber
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>

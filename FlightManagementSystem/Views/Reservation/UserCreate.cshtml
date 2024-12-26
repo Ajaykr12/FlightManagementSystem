@@ -1,0 +1,62 @@
+﻿@model FlightManagementSystem.Models.Reservation
+
+@{
+    ViewData["Title"] = "Create Reservation";
+    string PassengerName = ViewBag.Passenger.Name;
+    string FlightName = ViewBag.Flight.Name;
+}
+
+<h2>Create Reservation</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="PassengerId">Passenger</label>
+       @*  <select id="PassengerId" name="PassengerId" class="form-control" required>
+            <option value="">Select a Passenger</option>
+            @foreach (var passenger in ViewBag.Passengers)
+            {
+                <option value="@passenger.Id">@passenger.Name</option>
+            }
+        </select> *@
+        <input type="text" id="PassengerName" name="PassengerName" class="form-control" value="@PassengerName" required />
+    </div>
+
+    <div class="form-group">
+        <label for="FlightId">Flight</label>
+        @* <select id="FlightId" name="FlightId" class="form-control" required>
+            <option value="">Select a Flight</option>
+            @foreach (var flight in ViewBag.Flights)
+            {
+                <option value="@flight.Id">@flight.Name</option>
+            }
+        </select> *@
+        <input type="text" id="FlightName" name="FlightName" class="form-control" value="@FlightName" required />
+    </div>
+
+    <div class="form-group">
+        <label for="JourneyDate">Journey Date</label>
+        <input type="datetime-local" id="JourneyDate" name="JourneyDate" class="form-control" value="@ViewBag.Flight.ArrivalTime.ToString("yyyy-MM-ddTHH:mm")" required />
+    </div>
+
+    <div class="form-group">
+        <label for="PaymentMode">Payment Mode</label>
+        <select id="PaymentMode" name="PaymentMode" class="form-control" required>
+            <option value="">Select a PaymentMode</option>
+            <option value="UPI">UPI</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Debit Card">Debit Card</option>
+            <option value="Net Banking">Net Banking</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Amount">Amount</label>
+        <input type="number" id="Amount" name="Amount" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Reservation</button>
+</form>
+
+<p>
+    <a href="@Url.Action("UserIndex", "Reservation")">Back to Reservation List</a>
+</p>

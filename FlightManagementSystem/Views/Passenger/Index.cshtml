@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FlightManagementSystem.Models.Passenger>
+
+@{
+    ViewData["Title"] = "Passenger Index";
+}
+
+<h1>Passenger List</h1>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New Passenger</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Identification Type</th>
+            <th>Identification Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var passenger in Model)
+        {
+            <tr>
+                <td>@passenger.Name</td>
+                <td>@passenger.Address</td>
+                <td>@passenger.IdentificationType</td>
+                <td>@passenger.IdentificationNumber</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = passenger.Id })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Details", new { id = passenger.Id })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Delete", new { id = passenger.Id })" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this passenger?')">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

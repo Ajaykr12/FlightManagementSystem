@@ -1,0 +1,52 @@
+﻿@model FlightManagementSystem.Models.Flight
+
+@{
+    ViewData["Title"] = "Edit Flight";
+}
+
+<h2>Edit Flight</h2>
+
+<form method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div class="form-group">
+        <label for="Name">Flight Name</label>
+        <input type="text" id="Name" name="Name" class="form-control" value="@Model.Name" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Source">Source</label>
+        <input type="text" id="Source" name="Source" class="form-control" value="@Model.Source" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Destination">Destination</label>
+        <input type="text" id="Destination" name="Destination" class="form-control" value="@Model.Destination" required />
+    </div>
+
+    <div class="form-group">
+        <label for="DepartureTime">Departure Time</label>
+        <input type="datetime-local" id="DepartureTime" name="DepartureTime" class="form-control" value="@Model.DepartureTime.ToString("yyyy-MM-ddTHH:mm")" required />
+    </div>
+
+    <div class="form-group">
+        <label for="ArrivalTime">Arrival Time</label>
+        <input type="datetime-local" id="ArrivalTime" name="ArrivalTime" class="form-control" value="@Model.ArrivalTime.ToString("yyyy-MM-ddTHH:mm")" required />
+    </div>
+
+    <div class="form-group">
+        <label for="AvailableSeats">Available Seats</label>
+        <input type="number" id="AvailableSeats" name="AvailableSeats" class="form-control" value="@Model.AvailableSeats" required />
+    </div>
+
+    <div class="form-group">
+        <label for="IsCancelled">Is Cancelled</label>
+        <input type="checkbox" id="IsCancelled" name="IsCancelled" class="form-check-input" asp-for="IsCancelled"/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+<p>
+    <a href="@Url.Action("Index", "Flight")">Back to Flight List</a>
+</p>

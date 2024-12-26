@@ -1,0 +1,47 @@
+﻿@model FlightManagementSystem.Models.User
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<h1>Edit Your Profile</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+<form asp-action="Edit" method="post">
+    @*     <div class="form-group">
+    <label asp-for="FlightId" class="control-label"></label>
+    <input asp-for="FlightId" class="form-control" value="@ViewBag.flightId" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    </div> *@
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Username" class="control-label"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Role" class="control-label"></label>
+        <input asp-for="Role" class="form-control" />
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="@Url.Action("Profile")" class="btn btn-secondary">Back to Profile</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

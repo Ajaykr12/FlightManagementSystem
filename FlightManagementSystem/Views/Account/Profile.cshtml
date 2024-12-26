@@ -1,0 +1,23 @@
+﻿@model FlightManagementSystem.Models.User
+@{
+    ViewData["Title"] = "Profile";
+}
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+<div class="card text-center">
+    <div class="card-header">
+        @Model.Username
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">Role : @Model.Role</p>
+        <a href="@Url.Action("Edit", new { id = Model.Id})" class="btn btn-primary">Edit</a>
+    </div>
+    @* <div class="card-footer text-muted">
+        2 days ago
+    </div> *@
+</div>

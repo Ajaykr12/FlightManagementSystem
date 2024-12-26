@@ -1,0 +1,42 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Reservations List";
+}
+
+<h2>Reservations</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Reservation")" class="btn btn-primary">Create New Reservation</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Passenger Name</th>
+            <th>Flight Name</th>
+            <th>Reservation Date</th>
+            <th>Journey Date</th>
+            <th>Payment Mode</th>
+            <th>Amount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reservation in Model)
+        {
+            <tr>
+                <td>@reservation.PassengerName</td>
+                <td>@reservation.FlightName</td>
+                <td>@reservation.ReservationDate.ToShortDateString()</td>
+                <td>@reservation.JourneyDate.ToShortDateString()</td>
+                <td>@reservation.PaymentMode</td>
+                <td>@reservation.Amount</td>
+                <td>
+                    <a href="@Url.Action("Details", "Reservation", new { id = reservation.Id })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Cancel", "Reservation", new { id = reservation.Id })" class="btn btn-danger">Cancel</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

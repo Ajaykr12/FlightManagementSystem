@@ -1,0 +1,27 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Reservation Details";
+}
+
+<h2>Reservation Details</h2>
+
+<div>
+    <strong>Passenger Name:</strong> @Model.PassengerName <br />
+    <strong>Flight Name:</strong> @Model.FlightName <br />
+    <strong>Reservation Date:</strong> @Model.ReservationDate.ToString("MM/dd/yyyy HH:mm") <br />
+    <strong>Journey Date:</strong> @Model.JourneyDate.ToString("MM/dd/yyyy HH:mm") <br />
+    <strong>Payment Mode:</strong> @Model.PaymentMode <br />
+    <strong>Amount:</strong> @Model.Amount <br />
+    <strong>Status:</strong> @(Model.IsCancelled ? "Cancelled" : "Active")
+</div>
+
+<p>
+    @if (User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.Role)?.Value == "Admin")
+    {
+        <a href="@Url.Action("Index", "Reservation")" class="btn btn-secondary">Back to Reservation List</a>
+    }
+    else{
+        <a href="@Url.Action("UserIndex", "Reservation")" class="btn btn-secondary">Back to Reservation List</a>
+        }
+</p>

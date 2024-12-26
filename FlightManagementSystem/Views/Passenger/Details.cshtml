@@ -1,0 +1,30 @@
+﻿@model FlightManagementSystem.Models.Passenger
+
+@{
+    ViewData["Title"] = "Passenger Details";
+}
+
+<h1>Passenger Details</h1>
+
+<div>
+    <strong>Name:</strong> @Model.Name
+</div>
+<div>
+    <strong>Address:</strong> @Model.Address
+</div>
+<div>
+    <strong>Identification Type:</strong> @Model.IdentificationType
+</div>
+<div>
+    <strong>Identification Number:</strong> @Model.IdentificationNumber
+</div>
+
+@if (User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.Role)?.Value == "Admin")
+{
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+}
+else
+{
+    <a href="@Url.Action("UserIndex",new{id=ViewBag.flightId})" class="btn btn-secondary">Back to List</a>
+}
+
